@@ -12,8 +12,8 @@
       --wood-light: #fdf5e6;
       --wood-shaving: #fbe09b;
       --wood-amber: #c88141;
-      --glass-bg: rgba(255, 255, 255, 0.75);
-      --glass-bg-hover: rgba(255, 255, 255, 0.85);
+      --glass-bg: transparent;
+      --glass-bg-hover: transparent;
       --glass-border: rgba(200, 150, 80, 0.3);
       --glass-shadow: 0 8px 32px 0 rgba(100, 60, 20, 0.15);
       --accent: #d27c2c;
@@ -34,10 +34,10 @@
     body {
       color: var(--text-main);
       font-family: "Space Grotesk", "Segoe UI", sans-serif;
-      /* We use the logs picture as an immersive woody background */
+      /* Background using shavings image with ~45% visibility */
       background:
-        linear-gradient(135deg, rgba(255, 250, 240, 0.90) 0%, rgba(251, 230, 180, 0.95) 100%),
-        url('assets/4.jpg') center/cover fixed;
+        linear-gradient(135deg, rgba(255, 250, 240, 0.55) 0%, rgba(251, 230, 180, 0.55) 100%),
+        url('assets/shavings.jpeg') center/cover fixed;
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
@@ -325,7 +325,8 @@
       margin-top: 4rem;
       text-align: center;
       padding: 2rem;
-      color: var(--text-muted);
+      color: var(--text-main);
+      font-weight: bold;
       border-top: 1px solid var(--glass-border);
     }
 
@@ -355,6 +356,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Space+Grotesk:wght@400;500;700&display=swap"
     rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -371,11 +375,15 @@
         we deliver consistent, premium quality directly to you.
       </p>
       <div class="hero-actions">
-        <a class="btn primary" href="tel:+263772777161">Call 0772777161</a>
-        <a class="btn primary" href="tel:+263719907422">Call 0719907422</a>
-        <a class="btn secondary" href="mailto:kyledistributors@gmail.com">Email Us</a>
-        <a class="btn secondary" href="https://wa.me/263719907422" target="_blank" rel="noopener noreferrer">WhatsApp
-          Us</a>
+        <a class="btn primary" href="tel:+263772777161"><i class="fa-solid fa-phone"
+            style="margin-right:0.5rem;"></i>Call 0772777161</a>
+        <a class="btn primary" href="tel:+263719907422"><i class="fa-solid fa-phone"
+            style="margin-right:0.5rem;"></i>Call 0719907422</a>
+        <a class="btn secondary" href="mailto:kyledistributors1@gmail.com"><i class="fa-solid fa-envelope"
+            style="margin-right:0.5rem;"></i>Email Us</a>
+        <a class="btn secondary" href="https://wa.me/263719907422" target="_blank" rel="noopener noreferrer"
+          style="color:#128c7e;"><i class="fa-brands fa-whatsapp"
+            style="margin-right:0.5rem; font-size:1.2em;"></i>WhatsApp Us</a>
       </div>
     </header>
 
@@ -437,9 +445,18 @@
       <article class="card glass-panel animate" style="animation-delay: 0.4s;">
         <h3>Contact Information</h3>
         <ul class="list">
-          <li><strong>Sales 1:</strong> <a href="tel:+263772777161">0772777161</a></li>
-          <li><strong>Sales 2:</strong> <a href="tel:+263719907422">0719907422</a></li>
-          <li><strong>Email:</strong> <a href="mailto:kyledistributors@gmail.com">kyledistributors@gmail.com</a></li>
+          <li><i class="fa-solid fa-phone"
+              style="color:var(--accent); margin-right:0.5rem; width:1rem;"></i><strong>Sales 1:</strong> <a
+              href="tel:+263772777161">0772777161</a></li>
+          <li><i class="fa-solid fa-phone"
+              style="color:var(--accent); margin-right:0.5rem; width:1rem;"></i><strong>Sales 2:</strong> <a
+              href="tel:+263719907422">0719907422</a></li>
+          <li><i class="fa-solid fa-envelope"
+              style="color:var(--accent); margin-right:0.5rem; width:1rem;"></i><strong>Email:</strong> <a
+              href="mailto:kyledistributors1@gmail.com">kyledistributors1@gmail.com</a></li>
+          <li><i class="fa-brands fa-whatsapp"
+              style="color:#128c7e; margin-right:0.5rem; width:1rem; font-size:1.1em;"></i><strong>WhatsApp:</strong> <a
+              href="https://wa.me/263719907422" target="_blank" rel="noopener noreferrer">0719907422</a></li>
         </ul>
         <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem;">Reach out today for a quote or to
           schedule your next bulk delivery of pine shavings.</p>
