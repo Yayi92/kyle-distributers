@@ -12,8 +12,8 @@
       --wood-light: #fdf5e6;
       --wood-shaving: #fbe09b;
       --wood-amber: #c88141;
-      --glass-bg: rgba(255, 255, 255, 0.75);
-      --glass-bg-hover: rgba(255, 255, 255, 0.85);
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-bg-hover: rgba(255, 255, 255, 0.15);
       --glass-border: rgba(200, 150, 80, 0.3);
       --glass-shadow: 0 8px 32px 0 rgba(100, 60, 20, 0.15);
       --accent: #d27c2c;
@@ -350,6 +350,101 @@
     .animate.in-view {
       animation: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
+
+    /* Slideshow */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      margin: 3rem auto 0;
+      padding: 1rem;
+      border-radius: var(--radius);
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: rgba(0, 0, 0, 0.05);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide img,
+    .slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.3s;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.4);
+      text-decoration: none;
+      z-index: 2;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: var(--accent);
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: rgba(200, 150, 80, 0.3);
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .active,
+    .dot:hover {
+      background-color: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .fade {
+      animation-name: fadeAnim;
+      animation-duration: 0.8s;
+    }
+
+    @keyframes fadeAnim {
+      from {
+        opacity: .5
+      }
+
+      to {
+        opacity: 1
+      }
+    }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -377,8 +472,8 @@
       <div class="hero-actions">
         <a class="btn primary" href="tel:+263772777161"><i class="fa-solid fa-phone"
             style="margin-right:0.5rem;"></i>Call 0772777161</a>
-        <a class="btn primary" href="tel:+263719907422"><i class="fa-solid fa-phone"
-            style="margin-right:0.5rem;"></i>Call 0719907422</a>
+        <a class="btn primary" href="tel:+2637772907422"><i class="fa-solid fa-phone"
+            style="margin-right:0.5rem;"></i>Call 071772907422</a>
         <a class="btn secondary" href="mailto:kyledistributors1@gmail.com"><i class="fa-solid fa-envelope"
             style="margin-right:0.5rem;"></i>Email Us</a>
         <a class="btn secondary" href="https://wa.me/263719907422" target="_blank" rel="noopener noreferrer"
@@ -386,6 +481,30 @@
             style="margin-right:0.5rem; font-size:1.2em;"></i>WhatsApp Us</a>
       </div>
     </header>
+
+    <section class="slideshow glass-panel animate">
+      <div class="slideshow-container">
+        <div class="slide fade" style="display: block;">
+          <img src="assets/img1.jpeg" alt="Kyle Distributors Facility 1" />
+        </div>
+        <div class="slide fade">
+          <img src="assets/img2.jpeg" alt="Kyle Distributors Facility 2" />
+        </div>
+        <div class="slide fade">
+          <video autoplay loop muted playsinline>
+            <source src="assets/img_vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div style="text-align:center; padding-top: 1rem;">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </section>
 
     <section class="showcase">
       <!-- Feature 1: The Shavings Pile -->
@@ -450,16 +569,16 @@
               href="tel:+263772777161">0772777161</a></li>
           <li><i class="fa-solid fa-phone"
               style="color:var(--accent); margin-right:0.5rem; width:1rem;"></i><strong>Sales 2:</strong> <a
-              href="tel:+263719907422">0719907422</a></li>
+              href="tel:+263772907422">0772907422</a></li>
           <li><i class="fa-solid fa-envelope"
               style="color:var(--accent); margin-right:0.5rem; width:1rem;"></i><strong>Email:</strong> <a
               href="mailto:kyledistributors1@gmail.com">kyledistributors1@gmail.com</a></li>
           <li><i class="fa-brands fa-whatsapp"
               style="color:#128c7e; margin-right:0.5rem; width:1rem; font-size:1.1em;"></i><strong>WhatsApp:</strong> <a
-              href="https://wa.me/263719907422" target="_blank" rel="noopener noreferrer">0719907422</a></li>
+              href="https://wa.me/263772907422" target="_blank" rel="noopener noreferrer">07772907422</a></li>
         </ul>
         <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem;">Reach out today for a quote or to
-          schedule your next bulk delivery of pine shavings.</p>
+          schedule your next bulk delivery of pine wood shavings.</p>
       </article>
 
       <article class="card glass-panel animate" style="animation-delay: 0.5s;">
@@ -469,8 +588,7 @@
         </p>
         <div
           style="width: 100%; overflow: hidden; border-radius: 12px; margin: 1rem 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-          <iframe
-            src="https://maps.google.com/maps?q=-17.870844,31.046597&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          <iframe src="https://maps.google.com/maps?q=-17.870844,31.046597&t=&z=15&ie=UTF8&iwloc=&output=embed"
             width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
@@ -512,6 +630,45 @@
     document.querySelectorAll('.animate').forEach(el => {
       observer.observe(el);
     });
+
+    // Slideshow Logic
+    let slideIndex = 1;
+    let slideTimer;
+
+    function startSlideTimer() {
+      slideTimer = setInterval(() => plusSlides(1), 5000);
+    }
+
+    startSlideTimer();
+
+    function plusSlides(n) {
+      clearInterval(slideTimer);
+      showSlides(slideIndex += n);
+      startSlideTimer();
+    }
+
+    function currentSlide(n) {
+      clearInterval(slideTimer);
+      showSlides(slideIndex = n);
+      startSlideTimer();
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+      let dots = document.getElementsByClassName("dot");
+      if (!slides.length) return;
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
   </script>
 </body>
 
